@@ -1,0 +1,32 @@
+import math
+import pytest
+from Cartesian import LineFromPoints
+
+
+@pytest.mark.regular
+def PointToLine_test1():
+    assert LineFromPoints([5, 4], [6, 2]).LineFormula() == (
+        "(2.000000) * X + (1.000000) * Y = 14.000000",
+        None
+    )
+    assert LineFromPoints([-5, 7], [2, -4]).LineFormula() == ("(11.000000) * X + (7.000000) * Y = -6.000000",
+     None
+     )
+    assert LineFromPoints([1, 2], [2, 2]).LineFormula() == (
+        "1.000000 * Y= 2.000000",
+        None
+    )
+
+
+@pytest.mark.error
+def PointToLine_test2():
+    assert LineFromPoints([4, 5], [4, 5]).LineFormula() == (
+        None,
+        "Error in inputs",
+    )
+    assert LineFromPoints([201, 201], [201, 201]).LineFormula() == (
+        None,
+        "Error in inputs",
+    )
+
+
